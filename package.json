@@ -1,0 +1,51 @@
+{
+  "name": "cinnabar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cinnabar: design system de tinta preta, papel branco e pigmento vermelhao",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "storybook": "storybook dev -p 6007",
+    "build-storybook": "storybook build",
+    "build-site": "next build && storybook build -o out/catalogo",
+    "a11y": "node scripts/a11y.mjs",
+    "tokens": "node scripts/tokens-da-referencia.mjs",
+    "typecheck": "tsc --noEmit",
+    "kit-diff": "node scripts/kit-diff.mjs"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.7.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.1.0",
+    "input-otp": "^1.4.2",
+    "lucide-react": "^0.549.0",
+    "next": "^16.3.0",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.0",
+    "react-day-picker": "^10.0.1",
+    "react-dom": "^19.2.0",
+    "shadcn": "^4.16.1",
+    "sonner": "^2.0.7",
+    "tailwind-merge": "^3.3.1",
+    "tw-animate-css": "^1.4.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.5.6",
+    "@storybook/addon-docs": "^10.5.6",
+    "@storybook/addon-themes": "^10.5.6",
+    "@storybook/nextjs-vite": "^10.5.6",
+    "@tailwindcss/postcss": "^4.1.14",
+    "@types/node": "^24.6.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "axe-core": "^4.10.3",
+    "playwright": "^1.56.0",
+    "storybook": "^10.5.6",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7"
+  }
+}

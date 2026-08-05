@@ -1,0 +1,11 @@
+/* O Storybook nao passa pelo next/font, entao o catalogo carrega as fontes
+   direto do Google e preenche na mao as mesmas variaveis que o
+   styles/tokens.css espera. Os nomes precisam bater com os que o
+   app/layout.tsx entrega na vitrine: --fonte-texto e --fonte-mono. */
+
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --fonte-texto: "Instrument Sans";
+  --fonte-mono: "Geist Mono";
+}

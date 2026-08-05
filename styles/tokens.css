@@ -1,0 +1,462 @@
+/* ==========================================================================
+   Cinnabar: a fonte unica de verdade.
+
+   Tudo que o sistema sabe sobre cor, tipo, raio, sombra e espaco mora aqui.
+   Nao existe tailwind.config.js. Nenhum componente de components/ui/ precisa
+   ser editado pra falar a lingua da marca: quem traduz e a ponte no fim deste
+   arquivo.
+
+   Os valores de cor foram AMOSTRADOS da imagem em referencia/dashboard.png,
+   pixel a pixel, e os contrastes foram MEDIDOS (WCAG 2.x, luminancia
+   relativa). Os dois passos vivem em scripts/tokens-da-referencia.mjs.
+   Rode `npm run tokens` pra reproduzir qualquer numero comentado abaixo.
+
+   O que a referencia dita: preto puro, papel branco puro, mesa cinza neutra,
+   e a cor toda concentrada numa pintura em vermelhao e petroleo. O neutro e
+   absoluto de proposito: e ele que faz o pigmento saltar.
+   ========================================================================== */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* O tema escuro e por classe, nao por media query: quem decide e o next-themes
+   na vitrine e o seletor da toolbar no catalogo, nunca o sistema operacional
+   por cima da escolha da pessoa. */
+@custom-variant dark (&:is(.dark *));
+
+/* --------------------------------------------------------------------------
+   1. Tokens do tema claro
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+
+  /* Superficies -------------------------------------------------------- */
+
+  /* A mesa onde o papel se apoia. Medido: #f7f7f7 em 34% dos pixels da faixa
+     livre a direita da referencia. Nao e branco: se fosse, o cartao sumiria. */
+  --mesa: #f7f7f7;
+  /* O papel. Medido: #ffffff em 100% do corpo do cartao Accounts. Branco puro
+     mesmo, sem tempero quente nem frio. */
+  --papel: #ffffff;
+  /* Superficie recuada DENTRO do cartao (o bloco do saldo previsto na
+     referencia). Calibrado em #f4f4f4 pra que --texto-tenue ainda passe:
+     4.85:1. Em #f1f1f1 dava 4.38:1 e reprovava. */
+  --papel-fundo: #f4f4f4;
+  /* O preto do rail e da pilula. Medido: #000000 em 73% do rail lateral e 30%
+     do botao See all. Preto absoluto, nao quase-preto. */
+  --tinta: #000000;
+  /* 21:1 sobre --tinta. */
+  --sobre-tinta: #ffffff;
+
+  /* Texto -------------------------------------------------------------- */
+
+  /* 19.80:1 sobre --papel, 18.48:1 sobre --mesa. O titulo medido na referencia
+     e #000000 puro; 0a evita o halo do preto absoluto em texto corrido, sem
+     perder nada de presenca. */
+  --texto: #0a0a0a;
+  /* 7.34:1 sobre --papel, 6.85:1 sobre --mesa. */
+  --texto-suave: #565656;
+  /* 5.33:1 sobre --papel, 4.97:1 sobre --mesa, 4.85:1 sobre --papel-fundo.
+     E o degrau mais fraco que ainda carrega texto: rotulo maiusculo pequeno. */
+  --texto-tenue: #6b6b6b;
+
+  /* Linhas ------------------------------------------------------------- */
+
+  /* Borda decorativa: divisoria de lista, contorno de cartao. Nao precisa
+     passar 3:1 porque nao carrega informacao sozinha. */
+  --linha: #e6e6e6;
+  /* Borda de campo de formulario. Token SEPARADO da decorativa de proposito:
+     input, textarea e checkbox precisam de 3:1 (WCAG 1.4.11) porque a borda e
+     a unica coisa que diz onde o campo comeca. 3.45:1 sobre --papel,
+     3.22:1 sobre --mesa. */
+  --linha-campo: #8a8a8a;
+
+  /* Acao --------------------------------------------------------------- */
+
+  /* A acao primaria da referencia e a pilula PRETA, nao um botao colorido. O
+     laranja e pigmento de marca e de pintura, nunca de botao. Trocar isso de
+     lugar mataria a identidade. 21:1 com --sobre-acao. */
+  --acao: #000000;
+  --sobre-acao: #ffffff;
+
+  /* Marca -------------------------------------------------------------- */
+
+  /* O laranja vivo. Medido: #f4693e no icone Brex. Da 3.03:1 sobre --papel:
+     passa em 1.4.11 (preenchimento e componente) e REPROVA em texto normal.
+     Por isso ele preenche e marca, e nunca escreve. */
+  --pigmento: #f4693e;
+  /* 6.40:1 sobre --pigmento. Branco sobre pigmento daria 3.03:1 e reprovaria,
+     entao quem senta em cima do laranja e quase-preto. Bate com a referencia:
+     o tile amarelo tem texto preto, nao branco. */
+  --sobre-pigmento: #180a05;
+  /* O laranja profundo da pintura. Medido: #a83c1e, 66% do matiz da capa.
+     6.31:1 sobre --papel: ESTE e o laranja que carrega texto. */
+  --brasa: #a83c1e;
+  /* O azul-petroleo da pintura. Medido: #2c627e. 6.66:1 sobre --papel. */
+  --mare: #2c627e;
+
+  /* Dados -------------------------------------------------------------- */
+
+  /* 6.02:1 sobre --papel, 5.62:1 sobre --mesa, e 5.07:1 ja composto no chip
+     alta/12 (o valor cru #1a7a5e dava 4.48:1 no chip e reprovava). */
+  --alta: #187056;
+  --sobre-alta: #ffffff;
+  /* 5.76:1 sobre --papel, 4.83:1 composto no chip queda/12, 4.99:1 composto no
+     fundo queda/10 que o botao destructive do shadcn usa. */
+  --queda: #b43c3a;
+  --sobre-queda: #ffffff;
+  /* Medido: #fce878 no tile Cash out. 13.86:1 com --sobre-aviso. */
+  --aviso: #fce878;
+  --sobre-aviso: #241a00;
+  /* Medido: #7f50ae, 12% do donut. 5.74:1 sobre --papel, entao pode aparecer
+     em legenda escrita. */
+  --ametista: #7f50ae;
+  /* Medido no donut como #43b0b7, que da 2.58:1 e REPROVA 1.4.11 sobre papel
+     branco. Escurecido pro minimo que passa: 3.17:1. O anel ainda separa os
+     gomos com um fio de --papel, que e o que a referencia faz. */
+  --lagoa: #3c9ea5;
+
+  /* A pintura ---------------------------------------------------------- */
+
+  /* Estes quatro sao um QUADRO, nao superficie de interface: nao mudam entre
+     os temas, e por isso --sobre-capa nao se redeclara no .dark la embaixo.
+     Um veu de preto a 38% entra por baixo do conteudo pra garantir o piso:
+     branco sobre o ponto mais claro da pintura da 6.77:1, e a faixa de
+     metricas (vidro branco a 12% sobre o veu) da 5.21:1 no pior ponto. */
+  --capa-quente: #a83c1e;
+  --capa-viva: #f4693e;
+  --capa-fria: #2c627e;
+  --sobre-capa: #ffffff;
+  --capa-veu: 38%;
+  --capa-vidro: 12%;
+
+  /* Foco --------------------------------------------------------------- */
+
+  /* Reatribuivel por superficie: os blocos [data-superficie] no fim deste
+     arquivo trocam este valor quando o fundo muda. 6.31:1 sobre --papel. */
+  --foco: var(--brasa);
+  /* O anel quando ele cai sobre a superficie de tinta. Token proprio e nao
+     var(--pigmento) porque --tinta INVERTE entre os temas: no escuro ela e
+     clara, e o pigmento em cima dela daria 2.90:1. Aqui da 6.94:1 no claro e
+     6.04:1 no escuro. */
+  --foco-tinta: var(--pigmento);
+
+  /* Derivados da ponte -------------------------------------------------- */
+
+  /* secondary, muted e accent do shadcn NUNCA apontam pro fundo puro: se
+     apontassem, botao secundario e bloco surdo sumiriam na pagina. Saem de
+     color-mix com um degrau do texto, entao seguem o tema sozinhos (o var()
+     resolve no elemento onde .dark esta). */
+  --secundario: color-mix(in oklab, var(--texto) 7%, var(--papel));
+  --surdo: color-mix(in oklab, var(--texto) 4%, var(--papel));
+  --realce: color-mix(in oklab, var(--texto) 6%, var(--papel));
+
+  /* Raio ---------------------------------------------------------------- */
+
+  /* Medido: ajustei por minimos quadrados o recuo horizontal do canto superior
+     esquerdo dos cartoes (dx = r - sqrt(r^2 - (r-dy)^2)) contra os pixels da
+     referencia. Da ~11px num render de 1024px sobre um viewport de ~852px, ou
+     seja ~17px na escala real do desenho. Toda a familia sai daqui.
+
+     Consequencia proposital: com --radius-lg em 16px, um controle de 32px de
+     altura fica pilula, que e exatamente o que a referencia faz com o botao
+     See all e com o Manage. O raio nao e enfeite, e o formato do sistema. */
+  --raio: 16px;
+  --radius: var(--raio);
+
+  /* Sombra --------------------------------------------------------------- */
+
+  /* Na referencia o cartao nao tem borda: quem separa papel de mesa e uma
+     sombra baixa e larga. Duas camadas: um fio de contato e um halo aberto. */
+  --sombra-papel: 0 1px 2px rgb(0 0 0 / 0.04), 0 10px 28px -14px rgb(0 0 0 / 0.14);
+  --sombra-flutuante: 0 2px 6px -2px rgb(0 0 0 / 0.08), 0 24px 48px -18px rgb(0 0 0 / 0.28);
+  --sombra-tile: 0 0 0 1px color-mix(in oklab, var(--aviso) 55%, transparent),
+    0 8px 24px -8px color-mix(in oklab, var(--aviso) 80%, transparent);
+}
+
+/* --------------------------------------------------------------------------
+   2. Tema escuro: SO o que muda
+   -------------------------------------------------------------------------- */
+
+.dark {
+  color-scheme: dark;
+
+  --mesa: #0c0c0c;
+  --papel: #171717;
+  --papel-fundo: #212121;
+
+  /* A acao inverte: no escuro a pilula forte e clara. --tinta e o papel da
+     "superficie de acao", nao a cor preta em si. 18.97:1 com --sobre-tinta. */
+  --tinta: #fafafa;
+  --sobre-tinta: #0a0a0a;
+  --acao: #fafafa;
+  --sobre-acao: #0a0a0a;
+
+  --texto: #f5f5f5; /* 16.44:1 sobre --papel */
+  --texto-suave: #a8a8a8; /* 7.54:1 sobre --papel */
+  --texto-tenue: #8f8f8f; /* 5.54:1 sobre --papel, 4.98:1 sobre --papel-fundo */
+
+  --linha: #282828;
+  --linha-campo: #6a6a6a; /* 3.31:1 sobre --papel, 3.62:1 sobre --mesa */
+
+  /* --pigmento NAO muda: e a cor da marca, nao uma superficie. Como o fundo
+     dele e o mesmo nos dois temas, --sobre-pigmento tambem NAO se redeclara
+     aqui. Redeclarar so um dos dois quebraria o par medido em 6.40:1. */
+
+  /* Estes dois mudam porque sao usados como TEXTO, e o texto precisa clarear
+     quando o papel escurece. A pintura la embaixo continua a mesma. */
+  --brasa: #e8724a; /* 5.92:1 sobre --papel */
+  --mare: #8ab8d2; /* 8.42:1 sobre --papel */
+
+  --alta: #3fbc8d; /* 7.50:1 sobre --papel, 6.18:1 no chip alta/12 */
+  --sobre-alta: #062318; /* 6.97:1 sobre --alta */
+  --queda: #f0736c; /* 6.30:1 sobre --papel, 5.34:1 no chip queda/12 */
+  --sobre-queda: #2a0806; /* 6.49:1 sobre --queda */
+
+  /* --aviso NAO muda: o amarelo do tile e pigmento, igual ao laranja. Por
+     isso --sobre-aviso tambem NAO se redeclara: o par continua 13.86:1. */
+
+  --ametista: #ac86d8; /* 6.11:1 sobre --papel */
+  --lagoa: #5fd0d8; /* 9.82:1 sobre --papel */
+
+  /* No escuro o anel de foco vira o pigmento cheio: sobre --papel ele da
+     5.92:1, e a brasa clara ficaria perto demais do texto laranja. */
+  --foco: var(--pigmento);
+  /* E o anel sobre a tinta faz o caminho inverso, porque --tinta virou clara:
+     a brasa profunda (que aqui nao e mais --brasa, e a da pintura) da 6.04:1
+     sobre #fafafa, enquanto o pigmento daria 2.90:1 e reprovaria 1.4.11. */
+  --foco-tinta: var(--capa-quente);
+
+  --secundario: color-mix(in oklab, var(--texto) 12%, var(--papel));
+  --surdo: color-mix(in oklab, var(--texto) 8%, var(--papel));
+  --realce: color-mix(in oklab, var(--texto) 10%, var(--papel));
+
+  /* Sombra no escuro nao clareia: fecha. */
+  --sombra-papel: 0 1px 2px rgb(0 0 0 / 0.5), 0 10px 28px -14px rgb(0 0 0 / 0.7);
+  --sombra-flutuante: 0 2px 6px -2px rgb(0 0 0 / 0.6), 0 24px 48px -18px rgb(0 0 0 / 0.85);
+}
+
+/* --------------------------------------------------------------------------
+   3. Os tokens viram utilitarios do Tailwind
+   -------------------------------------------------------------------------- */
+
+@theme inline {
+  --color-mesa: var(--mesa);
+  --color-papel: var(--papel);
+  --color-papel-fundo: var(--papel-fundo);
+  --color-tinta: var(--tinta);
+  --color-sobre-tinta: var(--sobre-tinta);
+  --color-texto: var(--texto);
+  --color-texto-suave: var(--texto-suave);
+  --color-texto-tenue: var(--texto-tenue);
+  --color-linha: var(--linha);
+  --color-linha-campo: var(--linha-campo);
+  --color-acao: var(--acao);
+  --color-sobre-acao: var(--sobre-acao);
+  --color-pigmento: var(--pigmento);
+  --color-sobre-pigmento: var(--sobre-pigmento);
+  --color-brasa: var(--brasa);
+  --color-mare: var(--mare);
+  --color-alta: var(--alta);
+  --color-sobre-alta: var(--sobre-alta);
+  --color-queda: var(--queda);
+  --color-sobre-queda: var(--sobre-queda);
+  --color-aviso: var(--aviso);
+  --color-sobre-aviso: var(--sobre-aviso);
+  --color-ametista: var(--ametista);
+  --color-lagoa: var(--lagoa);
+  --color-capa-quente: var(--capa-quente);
+  --color-capa-viva: var(--capa-viva);
+  --color-capa-fria: var(--capa-fria);
+  --color-sobre-capa: var(--sobre-capa);
+  --color-foco: var(--foco);
+  --color-foco-tinta: var(--foco-tinta);
+
+  /* Fontes. As variaveis --fonte-* sao preenchidas por next/font na vitrine e
+     pelo @import do Google em .storybook/fontes.css no catalogo, porque o
+     Storybook nao passa pelo next/font. O fallback existe pra que o sistema
+     nao desabe se a fonte demorar. */
+  --font-texto: var(--fonte-texto), "Instrument Sans", ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--fonte-mono), "Geist Mono", ui-monospace, "SF Mono",
+    "Menlo", monospace;
+  --font-sans: var(--font-texto);
+
+  /* Escala tipografica NOMEADA pelo papel, nao pelo tamanho. Cada degrau leva
+     line-height e letter-spacing juntos: tamanho sem entrelinha nao e um
+     degrau, e uma sugestao. */
+  --text-rotulo: 0.6875rem;
+  --text-rotulo--line-height: 1.2;
+  --text-rotulo--letter-spacing: 0.09em;
+  --text-rotulo--font-weight: 600;
+
+  --text-ui: 0.8125rem;
+  --text-ui--line-height: 1.3;
+  --text-ui--letter-spacing: -0.004em;
+
+  --text-corpo: 0.9375rem;
+  --text-corpo--line-height: 1.6;
+  --text-corpo--letter-spacing: -0.006em;
+
+  --text-lede: 1.125rem;
+  --text-lede--line-height: 1.55;
+  --text-lede--letter-spacing: -0.013em;
+
+  --text-h3: 1.375rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.02em;
+
+  --text-h2: clamp(1.625rem, 1.2rem + 1.7vw, 2.125rem);
+  --text-h2--line-height: 1.14;
+  --text-h2--letter-spacing: -0.026em;
+
+  --text-display: clamp(2.5rem, 1.4rem + 4.6vw, 4.5rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.038em;
+
+  /* Raio: a familia inteira deriva do canto medido, por calc(). Mexer no
+     --raio la em cima reforma o sistema inteiro de uma vez. */
+  --radius-sm: calc(var(--raio) - 8px); /* 8px: chip, badge, quadradinho */
+  --radius-md: calc(var(--raio) - 4px); /* 12px: campo, botao pequeno */
+  --radius-lg: var(--raio); /* 16px: cartao, botao */
+  --radius-xl: calc(var(--raio) + 6px); /* 22px: painel, dialogo */
+  --radius-2xl: calc(var(--raio) + 14px); /* 30px: capa, moldura */
+
+  --shadow-papel: var(--sombra-papel);
+  --shadow-flutuante: var(--sombra-flutuante);
+  --shadow-tile: var(--sombra-tile);
+}
+
+/* --------------------------------------------------------------------------
+   4. A ponte pro shadcn
+   -------------------------------------------------------------------------- */
+
+/* Isto e o que faz os 36 componentes de components/ui/ falarem cinnabar sem
+   que ninguem edite arquivo por arquivo. Cada nome que o shadcn espera aponta
+   pra um token da marca. Quando um token muda la em cima, o kit inteiro muda
+   junto. */
+
+@theme inline {
+  --color-background: var(--mesa);
+  --color-foreground: var(--texto);
+
+  --color-card: var(--papel);
+  --color-card-foreground: var(--texto);
+  --color-popover: var(--papel);
+  --color-popover-foreground: var(--texto);
+
+  --color-primary: var(--acao);
+  --color-primary-foreground: var(--sobre-acao);
+
+  /* Derivados, nunca o fundo puro: senao botao secundario some na pagina. */
+  --color-secondary: var(--secundario);
+  --color-secondary-foreground: var(--texto);
+  --color-muted: var(--surdo);
+  --color-muted-foreground: var(--texto-suave);
+  --color-accent: var(--realce);
+  --color-accent-foreground: var(--texto);
+
+  --color-destructive: var(--queda);
+  --color-destructive-foreground: var(--sobre-queda);
+
+  --color-border: var(--linha);
+  --color-input: var(--linha-campo);
+  --color-ring: var(--foco);
+
+  /* Grafico: a ordem sai da referencia (donut roxo e teal primeiro). */
+  --color-chart-1: var(--ametista);
+  --color-chart-2: var(--lagoa);
+  --color-chart-3: var(--brasa);
+  --color-chart-4: var(--mare);
+  --color-chart-5: var(--aviso);
+}
+
+/* --------------------------------------------------------------------------
+   5. Base
+   -------------------------------------------------------------------------- */
+
+@layer base {
+  /* O Tailwind v4 usa currentColor como borda padrao, o que faz toda borda
+     nao declarada herdar a cor do texto. Aqui ela volta pra linha do sistema. */
+  *,
+  ::after,
+  ::before {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-texto);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--mesa);
+    color: var(--texto);
+    font-size: var(--text-corpo);
+    line-height: 1.6;
+  }
+
+  /* Viuva tipografica se resolve com text-wrap, e so com text-wrap. Nunca com
+     max-width em ch, nunca com <br> na mao, nunca com balance.
+
+     Por que balance nao entra em lugar nenhum: ele iguala o comprimento das
+     linhas de proposito, e pra igualar ele ENCURTA todas. O texto para antes
+     do fim da coluna e abre um vao a direita. Nao e bug, e o que ele faz. E
+     ele nunca resolveu viuva: quem resolve e o pretty. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  dt,
+  dd,
+  figcaption,
+  blockquote,
+  label,
+  caption,
+  summary {
+    text-wrap: pretty;
+  }
+
+  /* O anel de foco le --foco, que cada superficie reatribui abaixo. */
+  :focus-visible {
+    outline: 2px solid var(--foco);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: var(--pigmento);
+    color: var(--sobre-pigmento);
+  }
+
+  /* Numero em mono ganha largura fixa: coluna de valor que dança a cada
+     atualizacao e o jeito mais rapido de fazer um dashboard parecer quebrado. */
+  .font-mono,
+  [class*="font-mono"] {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Superficies que reatribuem o foco
+   -------------------------------------------------------------------------- */
+
+/* O anel de brasa (6.31:1 sobre papel) desaparece sobre preto. Cada superficie
+   forte declara qual anel usar, em vez de cada componente lembrar disso. */
+
+[data-superficie="tinta"] {
+  /* 6.94:1 no claro, 6.04:1 no escuro. O token faz o trabalho de virar a cor
+     quando a superficie inverte. */
+  --foco: var(--foco-tinta);
+}
+
+[data-superficie="capa"] {
+  /* Sobre a pintura velada, o unico anel confiavel e o branco cheio. */
+  --foco: var(--sobre-capa);
+}
