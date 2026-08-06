@@ -65,6 +65,7 @@ pigmento vermelho-alaranjado que a capa da referência é.
 - [x] `npx tsc --noEmit` limpo
 - [x] `npm run build-site` gera `out/` e `out/catalogo/`
 - [x] Conferido servido por `python3 -m http.server`
-- [ ] Deploy no Vercel, link aberto no navegador nos dois temas
-- [ ] `git init` e commit
+- [x] Deploy no Vercel, link aberto no navegador nos dois temas:
+      https://cinnabar-catalogo.vercel.app
+- [x] `git init` e commit
 - [x] README curto
