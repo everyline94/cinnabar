@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A única receita de ação forte do sistema. A cor é a tinta, não o pigmento: na referência o botão forte é a pílula preta, e um botão laranja daria 3.03:1 com texto branco.",
+          "A única receita de ação forte do sistema. A cor é a tinta, não o pigmento: botão laranja daria 3.03:1 com texto branco e reprovaria. Existe pra ninguém remontar a pílula na mão em cada tela.",
       },
     },
   },

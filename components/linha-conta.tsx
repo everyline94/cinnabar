@@ -6,10 +6,11 @@ import { ChipVariacao } from "@/components/chip-variacao";
 /**
  * A linha de conta: a parte DENSA do sistema.
  *
- * O cartao e arejado; a lista dentro dele nao. Na referencia cada linha tem
- * altura curta, divisoria fina, quadrado colorido a esquerda, numero mascarado
- * embaixo do nome e valor em mono alinhado a direita. O sistema precisa dos
- * dois climas, e este componente e o denso.
+ * O cartao e arejado; a lista dentro dele nao. Cada linha tem altura curta,
+ * divisoria fina, quadrado colorido a esquerda, numero mascarado embaixo do
+ * nome e valor em mono alinhado a direita. Um sistema que so sabe respirar nao
+ * aguenta tabela, e um que so sabe apertar cansa. Este componente e o lado
+ * denso.
  *
  * Nada de dado nem de fetch aqui dentro: a lista inteira entra por prop.
  */

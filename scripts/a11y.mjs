@@ -9,7 +9,7 @@
 // teste existe porque o modelo de contraste em lib/paleta.ts so conhece as
 // manchas de tinta: quem estourou o piso na primeira versao foi o branco das
 // pinceladas, que o modelo nao via. Afirmacao de contraste que ninguem mede
-// vira comentario mentiroso em duas semanas.
+// vira comentario mentiroso em duas semanas, e aqui ela e medida no pixel.
 //
 // Precisa do build pronto:
 //   npm run build-site && npm run a11y

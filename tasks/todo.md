@@ -1,14 +1,14 @@
 # Cinnabar
 
-Design system tirado de `referencia/dashboard.png`: tinta preta pura, papel
-branco, mesa cinza neutra e uma pintura em vermelhão e petróleo. O nome vem do
-pigmento vermelho-alaranjado que a capa da referência é.
+Design system de tinta preta pura, papel branco, mesa cinza sem tempero e uma
+pintura em vermelhão e petróleo. O nome vem do cinábrio, a pedra de onde sai o
+pigmento vermelho-alaranjado.
 
 ## 1. Fundação
 
-- [x] Medir a referência por script (decodifica o PNG, histograma por região)
+- [x] Fechar a paleta e nomear cada token pelo papel que cumpre
 - [x] Medir o contraste de cada par e de cada composto (WCAG 2.x)
-- [x] `scripts/tokens-da-referencia.mjs` commitado, `npm run tokens` reproduz
+- [x] `scripts/auditar-contraste.mjs` commitado, `npm run contraste` reproduz
 - [x] Scaffold à mão: package, tsconfig, postcss, next.config, gitignore
 - [x] `components.json` escrito à mão (style base-nova, neutral, lucide)
 - [x] `styles/tokens.css` com as seis camadas na ordem
@@ -39,7 +39,7 @@ pigmento vermelho-alaranjado que a capa da referência é.
 - [x] `BotaoAcao` (a única receita de ação forte)
 - [x] `ContainerPagina`, `CabecalhoPagina`, `Secao`
 - [x] `TileMetrica`, `EstadoVazio`
-- [x] `CapaPintada` (o motivo gráfico da referência, em gradiente)
+- [x] `CapaPintada` (o motivo gráfico do sistema, em gradiente)
 - [x] `FaixaMetricas` (a régua de KPIs em vidro sobre a capa)
 - [x] `ChipVariacao`, `LinhaConta`, `AnelComposicao`, `TileAviso`
 - [x] `ToggleTema` e `Toaster`
@@ -50,7 +50,7 @@ pigmento vermelho-alaranjado que a capa da referência é.
 - [x] `manager.ts` e `manager-head.html` com a marca
 - [x] Story da paleta com contraste impresso
 - [x] Story da escala tipográfica
-- [x] Story de padrão remontando a cena da referência
+- [x] Story de padrão com uma tela inteira montada só com o sistema
 - [x] Conteúdo extraído pra componente irmão, story e vitrine importam o mesmo
 
 ## 6. Vitrine

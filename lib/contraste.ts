@@ -2,7 +2,7 @@
  * Contraste WCAG 2.x por luminancia relativa.
  *
  * Vive aqui, e nao dentro do script, porque tres lugares precisam do mesmo
- * numero: o `npm run tokens` que reprova o build, a story da paleta que
+ * numero: o `npm run contraste` que reprova o build, a story da paleta que
  * imprime o valor na tela, e a vitrine. Duas implementacoes divergem em uma
  * semana e uma delas passa a mentir.
  */

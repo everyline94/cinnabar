@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
  *
  * Quadrado de tinta com os cantos arredondados, e dentro dele os dois
  * pigmentos da pintura: o vermelhao subindo do canto inferior esquerdo e o
- * petroleo descendo do superior direito. E a referencia reduzida a um simbolo:
- * preto absoluto com a tinta invadindo os cantos.
+ * petroleo descendo do superior direito. E o sistema inteiro reduzido a um
+ * simbolo: preto absoluto com a tinta invadindo os cantos.
  *
  * O mesmo desenho vive em app/icon.svg e no favicon do catalogo. Se ele mudar
  * aqui, muda nos dois.

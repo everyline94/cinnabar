@@ -4,14 +4,12 @@ Uma linha por regra preventiva. Entra aqui o que já custou tempo duas vezes.
 
 ## Texto
 
-- **`text-wrap: balance` não entra em lugar nenhum.** A especificação original
-  deste projeto pedia balance em h2/h3, mas a regra global do Bruno (medida no
-  ds-hub em 29/07/2026) proíbe balance em qualquer elemento: ele iguala o
-  comprimento das linhas encurtando todas, o texto para antes do fim da coluna
-  e abre um vão à direita. Numa coluna de 940px, h2 de duas linhas deixou 358px
-  de vão com balance contra 28px com pretty. Viúva se resolve com `pretty`, e
-  só com `pretty`. Vale também: nada de `max-width` em `ch`, nada de `<br>` na
-  mão. Prevalece a regra global. Ver `styles/tokens.css`, camada 6.
+- **`text-wrap: balance` não entra em lugar nenhum.** Ele iguala o comprimento
+  das linhas encurtando todas: o texto para antes do fim da coluna e abre um
+  vão à direita. Medido no ds-hub em 29/07/2026, numa coluna de 940px, h2 de
+  duas linhas deixou 358px de vão com balance contra 28px com pretty. Viúva se
+  resolve com `pretty`, e só com `pretty`. Vale também: nada de `max-width` em
+  `ch`, nada de `<br>` na mão. Ver `styles/tokens.css`, camada 6.
 - Sem travessão e sem meia-risca em nenhum arquivo, comentário ou commit. Sem
   emoji. Isso **não** significa sem acento: string de interface, `aria-label`,
   título de story, comentário e markdown vão acentuados. Só identificador de
@@ -21,11 +19,11 @@ Uma linha por regra preventiva. Entra aqui o que já custou tempo duas vezes.
 
 ## Tokens
 
-- Amostrar antes de nomear. O "cinza claro" desta referência é `#f7f7f7` exato,
-  não `#f5f5f5` nem branco. A diferença decide se o cartão flutua ou some.
+- Cravar o valor antes de nomear. O cinza da mesa é `#f7f7f7` exato, não
+  `#f5f5f5` nem branco. A diferença decide se o cartão flutua ou some.
 - Medir o contraste dos **compostos**, não só das cores puras. `#c4413f` passava
   5.03:1 sobre papel e reprovava em 4.24:1 dentro do próprio chip a 12%. Quatro
-  dos seis erros que o `npm run tokens` pegou eram assim.
+  dos seis erros que o `npm run contraste` pegou eram assim.
 - Fundo forte sem par `--sobre-X` é dívida. E quando o fundo não muda entre os
   temas (`--pigmento`, `--aviso`, a pintura da capa), o `--sobre-X` **não** se
   redeclara no `.dark`: redeclarar só um dos dois quebra o par já medido.

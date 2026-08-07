@@ -6,9 +6,9 @@ import { cn } from "@/lib/utils";
 /**
  * O chip de variacao: seta mais porcentagem, em mono.
  *
- * Vem direto da referencia, onde cada linha de valor carrega um destes. A cor
- * NAO e a unica informacao: a seta muda de direcao junto, senao quem nao
- * distingue verde de vermelho perde o dado (WCAG 1.4.1).
+ * Toda linha de valor do sistema carrega um destes. A cor NAO e a unica
+ * informacao: a seta muda de direcao junto, senao quem nao distingue verde de
+ * vermelho perde o dado (WCAG 1.4.1).
  *
  * Contraste medido: --alta da 5.07:1 dentro do proprio chip a 12% no claro e
  * 6.18:1 no escuro; --queda da 4.83:1 e 5.34:1. Medir a cor pura sobre papel

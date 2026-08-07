@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A acao do sistema e PRETA, nao colorida: e a pilula da referencia. O laranja e pigmento de marca e de pintura, e nunca vira botao. Com o raio de 16px, um controle de 36px de altura fecha em pilula sozinho.",
+          "A ação do sistema é PRETA, não colorida. O laranja é pigmento de marca e de pintura, e nunca vira botão: sobre papel branco ele dá 3.03:1 e reprovaria em texto. Com o raio de 16px, um controle de 36px de altura fecha em pílula sozinho.",
       },
     },
   },

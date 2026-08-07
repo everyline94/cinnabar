@@ -6,14 +6,14 @@
    ser editado pra falar a lingua da marca: quem traduz e a ponte no fim deste
    arquivo.
 
-   Os valores de cor foram AMOSTRADOS da imagem em referencia/dashboard.png,
-   pixel a pixel, e os contrastes foram MEDIDOS (WCAG 2.x, luminancia
-   relativa). Os dois passos vivem em scripts/tokens-da-referencia.mjs.
-   Rode `npm run tokens` pra reproduzir qualquer numero comentado abaixo.
+   Cada contraste comentado aqui foi MEDIDO (WCAG 2.x, luminancia relativa),
+   nao estimado. A conta vive em scripts/auditar-contraste.mjs, que reprova o
+   build quando um par cai abaixo do minimo. Rode `npm run contraste` pra
+   reproduzir qualquer numero deste arquivo.
 
-   O que a referencia dita: preto puro, papel branco puro, mesa cinza neutra,
-   e a cor toda concentrada numa pintura em vermelhao e petroleo. O neutro e
-   absoluto de proposito: e ele que faz o pigmento saltar.
+   A regra do sistema: preto puro, papel branco puro, mesa cinza sem tempero,
+   e uma cor so. O neutro e absoluto de proposito, porque e ele que faz o
+   pigmento saltar. Cinza temperado rouba a atencao do vermelhao.
    ========================================================================== */
 
 @import "tailwindcss";
@@ -34,26 +34,26 @@
 
   /* Superficies -------------------------------------------------------- */
 
-  /* A mesa onde o papel se apoia. Medido: #f7f7f7 em 34% dos pixels da faixa
-     livre a direita da referencia. Nao e branco: se fosse, o cartao sumiria. */
+  /* A mesa onde o papel se apoia. Cinza exato, sem tempero quente nem frio.
+     Nao e branco de proposito: se fosse, o cartao sumiria dentro dela. */
   --mesa: #f7f7f7;
-  /* O papel. Medido: #ffffff em 100% do corpo do cartao Accounts. Branco puro
-     mesmo, sem tempero quente nem frio. */
+  /* O papel. Branco puro mesmo. A tentacao de temperar em creme ou em azul
+     existe, e aqui ela e recusada: o neutro absoluto e o ponto do sistema. */
   --papel: #ffffff;
   /* Superficie recuada DENTRO do cartao (o bloco do saldo previsto na
-     referencia). Calibrado em #f4f4f4 pra que --texto-tenue ainda passe:
+     cartao). Calibrado em #f4f4f4 pra que --texto-tenue ainda passe:
      4.85:1. Em #f1f1f1 dava 4.38:1 e reprovava. */
   --papel-fundo: #f4f4f4;
-  /* O preto do rail e da pilula. Medido: #000000 em 73% do rail lateral e 30%
-     do botao See all. Preto absoluto, nao quase-preto. */
+  /* O preto do rail e da pilula. Preto absoluto, nao quase-preto: quase-preto
+     em superficie grande le como cinza escuro e amolece o sistema inteiro. */
   --tinta: #000000;
   /* 21:1 sobre --tinta. */
   --sobre-tinta: #ffffff;
 
   /* Texto -------------------------------------------------------------- */
 
-  /* 19.80:1 sobre --papel, 18.48:1 sobre --mesa. O titulo medido na referencia
-     e #000000 puro; 0a evita o halo do preto absoluto em texto corrido, sem
+  /* 19.80:1 sobre --papel, 18.48:1 sobre --mesa. Titulo pede preto absoluto,
+     mas texto corrido em #000000 abre halo na tela; 0a resolve isso sem
      perder nada de presenca. */
   --texto: #0a0a0a;
   /* 7.34:1 sobre --papel, 6.85:1 sobre --mesa. */
@@ -75,26 +75,28 @@
 
   /* Acao --------------------------------------------------------------- */
 
-  /* A acao primaria da referencia e a pilula PRETA, nao um botao colorido. O
-     laranja e pigmento de marca e de pintura, nunca de botao. Trocar isso de
-     lugar mataria a identidade. 21:1 com --sobre-acao. */
+  /* A acao primaria e a pilula PRETA, nao um botao colorido. O laranja e
+     pigmento de marca e de pintura, nunca de botao: botao laranja daria
+     3.03:1 com texto branco e reprovaria. 21:1 com --sobre-acao. */
   --acao: #000000;
   --sobre-acao: #ffffff;
 
   /* Marca -------------------------------------------------------------- */
 
-  /* O laranja vivo. Medido: #f4693e no icone Brex. Da 3.03:1 sobre --papel:
-     passa em 1.4.11 (preenchimento e componente) e REPROVA em texto normal.
-     Por isso ele preenche e marca, e nunca escreve. */
+  /* O laranja vivo, a unica cor de marca. Da 3.03:1 sobre --papel: passa em
+     1.4.11 (preenchimento e componente) e REPROVA em texto normal. Por isso
+     ele preenche e marca, e nunca escreve. */
   --pigmento: #f4693e;
   /* 6.40:1 sobre --pigmento. Branco sobre pigmento daria 3.03:1 e reprovaria,
-     entao quem senta em cima do laranja e quase-preto. Bate com a referencia:
-     o tile amarelo tem texto preto, nao branco. */
+     entao quem senta em cima do laranja e quase-preto. Mesma logica do tile
+     amarelo, que tambem leva texto preto e nao branco. */
   --sobre-pigmento: #180a05;
-  /* O laranja profundo da pintura. Medido: #a83c1e, 66% do matiz da capa.
-     6.31:1 sobre --papel: ESTE e o laranja que carrega texto. */
+  /* O laranja profundo da pintura. 6.31:1 sobre --papel: ESTE e o laranja que
+     carrega texto, e o vivo la em cima e o que preenche. Dois papeis, duas
+     cores, e nenhuma das duas faz o trabalho da outra. */
   --brasa: #a83c1e;
-  /* O azul-petroleo da pintura. Medido: #2c627e. 6.66:1 sobre --papel. */
+  /* O azul-petroleo da pintura, o unico frio do sistema. 6.66:1 sobre
+     --papel. */
   --mare: #2c627e;
 
   /* Dados -------------------------------------------------------------- */
@@ -107,15 +109,16 @@
      fundo queda/10 que o botao destructive do shadcn usa. */
   --queda: #b43c3a;
   --sobre-queda: #ffffff;
-  /* Medido: #fce878 no tile Cash out. 13.86:1 com --sobre-aviso. */
+  /* O amarelo de atencao. 13.86:1 com --sobre-aviso. */
   --aviso: #fce878;
   --sobre-aviso: #241a00;
-  /* Medido: #7f50ae, 12% do donut. 5.74:1 sobre --papel, entao pode aparecer
-     em legenda escrita. */
+  /* A primeira serie de grafico. 5.74:1 sobre --papel, entao ela aguenta
+     aparecer escrita em legenda, e nao so como area. */
   --ametista: #7f50ae;
-  /* Medido no donut como #43b0b7, que da 2.58:1 e REPROVA 1.4.11 sobre papel
-     branco. Escurecido pro minimo que passa: 3.17:1. O anel ainda separa os
-     gomos com um fio de --papel, que e o que a referencia faz. */
+  /* A segunda serie. O teal claro que eu queria (#43b0b7) dava 2.58:1 e
+     REPROVAVA 1.4.11 sobre papel branco, entao desceu pro minimo que passa:
+     3.17:1. O anel ainda separa gomo vizinho com um fio de --papel, porque
+     ametista e lagoa ficam perto demais uma da outra. */
   --lagoa: #3c9ea5;
 
   /* A pintura ---------------------------------------------------------- */
@@ -155,21 +158,20 @@
 
   /* Raio ---------------------------------------------------------------- */
 
-  /* Medido: ajustei por minimos quadrados o recuo horizontal do canto superior
-     esquerdo dos cartoes (dx = r - sqrt(r^2 - (r-dy)^2)) contra os pixels da
-     referencia. Da ~11px num render de 1024px sobre um viewport de ~852px, ou
-     seja ~17px na escala real do desenho. Toda a familia sai daqui.
+  /* O raio base. Toda a familia sai daqui por calc(), entao mexer neste
+     numero reforma o sistema inteiro de uma vez.
 
-     Consequencia proposital: com --radius-lg em 16px, um controle de 32px de
-     altura fica pilula, que e exatamente o que a referencia faz com o botao
-     See all e com o Manage. O raio nao e enfeite, e o formato do sistema. */
+     Consequencia proposital: com --radius-lg em 16px, um controle de 36px de
+     altura fecha em pilula sozinho. O raio nao e enfeite, e o formato do
+     sistema. */
   --raio: 16px;
   --radius: var(--raio);
 
   /* Sombra --------------------------------------------------------------- */
 
-  /* Na referencia o cartao nao tem borda: quem separa papel de mesa e uma
-     sombra baixa e larga. Duas camadas: um fio de contato e um halo aberto. */
+  /* O cartao nao tem borda: quem separa papel de mesa e uma sombra baixa e
+     larga. Duas camadas, um fio de contato e um halo aberto. Contorno em
+     cartao branco sobre cinza claro so suja o desenho. */
   --sombra-papel: 0 1px 2px rgb(0 0 0 / 0.04), 0 10px 28px -14px rgb(0 0 0 / 0.14);
   --sombra-flutuante: 0 2px 6px -2px rgb(0 0 0 / 0.08), 0 24px 48px -18px rgb(0 0 0 / 0.28);
   --sombra-tile: 0 0 0 1px color-mix(in oklab, var(--aviso) 55%, transparent),
@@ -365,7 +367,7 @@
   --color-input: var(--linha-campo);
   --color-ring: var(--foco);
 
-  /* Grafico: a ordem sai da referencia (donut roxo e teal primeiro). */
+  /* Grafico: a ordem comeca nas duas series mais fortes. */
   --color-chart-1: var(--ametista);
   --color-chart-2: var(--lagoa);
   --color-chart-3: var(--brasa);

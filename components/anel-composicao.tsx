@@ -3,13 +3,13 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * O anel de composicao: o donut da referencia.
+ * O anel de composicao: o grafico de rosca do sistema.
  *
  * Duas decisoes que nao sao estetica:
  *
  * 1. Os gomos sao separados por um fio de --papel. --ametista e --lagoa ficam
  *    a 1.8:1 um do outro, entao cor sozinha nao distingue gomo vizinho. O fio
- *    resolve, e e o que a referencia faz.
+ *    resolve sem precisar mexer na paleta.
  * 2. Cada fatia aparece tambem na legenda, escrita. Cor nunca e a unica forma
  *    de ler o dado (WCAG 1.4.1). O anel em si e aria-hidden, e quem carrega o
  *    numero pra tecnologia assistiva e a lista.

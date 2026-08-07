@@ -5,9 +5,10 @@ import { cn } from "@/lib/utils";
 /**
  * A capa pintada: o motivo grafico do sistema.
  *
- * Na referencia, o que faz a tela ser reconhecivel nao e o cartao nem o rail:
- * e a pintura em vermelhao e petroleo atras do cabecalho. Por isso ela e
- * componente, e nao decoracao solta dentro de uma story.
+ * O que faz a tela ser reconhecivel nao e o cartao nem o rail, e a pintura em
+ * vermelhao e petroleo atras do cabecalho. Motivo grafico forte vira
+ * componente, nao decoracao solta dentro de uma story: solto ele e recriado na
+ * mao em cada tela e cada copia sai um pouco diferente.
  *
  * A pintura e feita so em CSS, sem imagem. A primeira tentativa empilhou
  * gradientes lineares num angulo unico e o resultado leu como metal corrugado,
@@ -18,7 +19,7 @@ import { cn } from "@/lib/utils";
  *
  * O veu (--capa-veu, preto a 38%) nao e estetica, e o piso de contraste: sem
  * ele o texto branco sobre o ponto mais claro da pintura daria 2.7:1. Com ele,
- * 6.77:1. Ver scripts/tokens-da-referencia.mjs, bloco CADEIAS.
+ * 6.77:1. Ver scripts/auditar-contraste.mjs, bloco CADEIAS.
  */
 
 type CapaPintadaProps = React.ComponentProps<"div"> & {
@@ -29,7 +30,7 @@ type CapaPintadaProps = React.ComponentProps<"div"> & {
 /** As manchas de tinta. Cada uma e uma elipse girada e desfocada. */
 const MANCHAS: React.CSSProperties[] = [
   {
-    // o campo frio, a esquerda do centro, que e a marca da referencia
+    // o campo frio, a esquerda do centro, que e o que quebra o calor
     inset: "-30% 30% -34% 8%",
     background:
       "radial-gradient(closest-side, var(--capa-fria) 0%, color-mix(in oklab, var(--capa-fria) 82%, transparent) 62%, transparent 100%)",

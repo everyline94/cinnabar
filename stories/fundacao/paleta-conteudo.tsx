@@ -10,7 +10,7 @@ import { GRUPOS, TOKENS, paleta } from "@/lib/paleta";
  * Este arquivo NAO e uma story: e o conteudo que a story de Fundacao/Paleta e
  * a vitrine importam. Duas listas de token escritas a mao divergem em uma
  * semana, entao existe uma so, e ela vem de lib/paleta.ts, o mesmo arquivo que
- * o `npm run tokens` usa pra reprovar o build.
+ * o `npm run contraste` usa pra reprovar o build.
  *
  * Os dois numeros aparecem juntos (claro e escuro) de proposito. Imprimir so o
  * do tema atual esconde justamente o caso que costuma quebrar: o token que

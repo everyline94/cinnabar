@@ -10,7 +10,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       data-slot="input"
       className={cn(
         // CUSTOMIZADO. Tres coisas: altura de 32 pra 36px e raio md (12px), que e
-        // o formato dos campos de valor da referencia; fundo em --papel em vez
+        // o formato de campo de valor do sistema; fundo em --papel em vez
         // de transparente, pra que o campo se leia como campo mesmo caindo
         // dentro de um cartao ja branco; e o disabled/dark saindo de
         // --papel-fundo em vez de input/30 (o input aqui e a linha de campo, e

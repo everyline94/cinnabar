@@ -29,7 +29,7 @@ const fonteMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Cinnabar",
   description:
-    "Um design system de tinta preta, papel branco e pigmento vermelhão, tirado por medição de uma única imagem de referência.",
+    "Um design system de tinta preta, papel branco e uma cor só. Cada contraste medido, nenhum estimado.",
 };
 
 export default function RootLayout({

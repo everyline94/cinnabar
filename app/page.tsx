@@ -22,8 +22,8 @@ import { CenaConteudo } from "@/stories/padroes/cena-conteudo";
 /**
  * A vitrine.
  *
- * So peças do sistema, nada montado a mao. A paleta, a escala tipografica e a
- * cena principal sao os MESMOS componentes que o catalogo importa: se
+ * So pecas do sistema, nada montado a mao. A paleta, a escala tipografica e a
+ * tela de exemplo sao os MESMOS componentes que o catalogo importa: se
  * divergirem, divergem nos dois ao mesmo tempo, que e o unico jeito de nao
  * divergirem em silencio.
  */
@@ -44,7 +44,7 @@ export default function Vitrine() {
               <span className="text-brasa">pigmento</span> que não pede licença.
             </>
           }
-          descricao="O Cinnabar saiu de uma única imagem de referência, medida pixel a pixel. O neutro é absoluto de propósito: é ele que faz o vermelhão saltar da página. Nenhuma cor aqui foi estimada no olho, e nenhum contraste foi chutado."
+          descricao="Cinábrio é a pedra de onde sai o vermelhão. Cara e venenosa, e os pintores usaram por dois mil anos assim mesmo, porque nada mais era tão vermelho. Fiz o sistema em cima disso: preto, branco e uma cor só. Ela não divide espaço com ninguém."
           acoes={
             // O catalogo NAO e rota do Next: e o build do Storybook assado
             // por cima em out/catalogo/. Com next/link o roteador tenta
@@ -60,15 +60,15 @@ export default function Vitrine() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <TileMetrica rotulo="Tokens de cor" valor="30" nota="nomeados pelo papel" />
           <TileMetrica rotulo="Componentes" valor="36" nota="do kit, vestidos" />
-          <TileMetrica rotulo="Pares medidos" valor="88" nota="claro e escuro" />
+          <TileMetrica rotulo="Pares de contraste" valor="88" nota="medidos, não estimados" />
           <TileMetrica rotulo="Violação de axe" valor="0" nota="varrido por script" />
         </div>
       </ContainerPagina>
 
       <ContainerPagina className="flex flex-col gap-8">
         <Secao
-          titulo="A cena que a referência pedia"
-          descricao="Remontada só com peças do sistema. É o único teste que prova que os tokens seguram uma tela inteira, e não apenas um componente isolado numa moldura."
+          titulo="Uma tela inteira, não um componente solto"
+          descricao="Componente isolado numa moldura sempre parece bom. Montei um painel financeiro de verdade só com peças daqui, porque é o único jeito de descobrir se os tokens aguentam densidade, ou se eles só funcionam bonito no vazio."
         >
           <CenaConteudo nivelTitulo={2} />
         </Secao>
@@ -77,7 +77,7 @@ export default function Vitrine() {
       <ContainerPagina className="flex flex-col gap-8">
         <Secao
           titulo="Paleta"
-          descricao="Cada token é nomeado pelo papel que cumpre, nunca pela cor que tem. O contraste ao lado foi medido por script, e o mesmo arquivo que alimenta esta lista reprova o build quando um par cai abaixo do mínimo."
+          descricao="Cada token é nomeado pelo papel que cumpre, nunca pela cor que tem. Ninguém precisa saber que --mesa é cinza, precisa saber que é onde o papel se apoia. O contraste ao lado é medido por script, e o mesmo arquivo que alimenta esta lista reprova o build quando um par cai abaixo do mínimo."
         >
           <PaletaConteudo esconderCabecalho />
         </Secao>
@@ -86,7 +86,7 @@ export default function Vitrine() {
       <ContainerPagina className="flex flex-col gap-8">
         <Secao
           titulo="Tipografia"
-          descricao="Instrument Sans no texto e Geist Mono no número. A escala é nomeada pelo papel, e cada degrau já traz entrelinha e espacejamento junto."
+          descricao="Instrument Sans no texto e Geist Mono no número. A escala é nomeada pelo papel, não pelo tamanho, e cada degrau já vem com entrelinha e espacejamento. Tamanho sem entrelinha não é um degrau, é uma sugestão."
         >
           <TipografiaConteudo esconderCabecalho />
         </Secao>
@@ -95,7 +95,7 @@ export default function Vitrine() {
       <ContainerPagina className="flex flex-col gap-8">
         <Secao
           titulo="Componentes em cena"
-          descricao="O kit inteiro fala a língua dos tokens sem que nenhum arquivo de ui tenha sido editado um por um: quem traduz é a ponte no fim do tokens.css."
+          descricao="São 36 componentes do shadcn falando a língua dos tokens sem que eu tenha editado arquivo por arquivo. Quem traduz é a ponte no fim do tokens.css, e é ela que faz trocar uma cor ser uma linha em vez de uma tarde."
         >
           <div className="grid items-start gap-5 lg:grid-cols-3">
             <Card>
@@ -115,8 +115,9 @@ export default function Vitrine() {
                 </div>
                 <p className="text-corpo text-texto-suave">
                   A ação forte é preta, não colorida. O laranja é pigmento de
-                  marca e de pintura: sobre papel ele dá 3.03:1, então preenche
-                  e marca, mas nunca escreve.
+                  marca: sobre papel ele dá 3.03:1, então preenche e assina, mas
+                  nunca escreve. Botão laranja com texto branco reprovaria, e
+                  quase todo mundo faz isso mesmo assim.
                 </p>
               </CardContent>
             </Card>
@@ -136,8 +137,9 @@ export default function Vitrine() {
                 </div>
                 <p className="text-corpo text-texto-suave">
                   A borda do campo é um token separado da borda decorativa,
-                  calibrado para passar os 3:1 do critério 1.4.11. É a única
-                  coisa que diz onde o campo começa.
+                  calibrado pra passar os 3:1 do critério 1.4.11. Ela é a única
+                  coisa que diz onde o campo começa, então não pode ser o mesmo
+                  cinza fraquinho que desenha divisória de lista.
                 </p>
               </CardContent>
             </Card>
@@ -145,7 +147,7 @@ export default function Vitrine() {
             <EstadoVazio
               icone={<Landmark />}
               titulo="Tela sem dado é tela de verdade"
-              descricao="O estado vazio ganha o mesmo papel, o mesmo raio e a mesma sombra da tela cheia. O que muda é a densidade, não a superfície."
+              descricao="O estado vazio ganha o mesmo papel, o mesmo raio e a mesma sombra da tela cheia. O que muda é a densidade, não a superfície. É a primeira tela que todo mundo vê e a última que alguém desenha."
               acoes={<BotaoAcao seta>Conectar conta</BotaoAcao>}
             />
           </div>
@@ -159,7 +161,7 @@ export default function Vitrine() {
             href="/catalogo/"
             className="text-ui text-texto-suave underline decoration-linha-campo underline-offset-4 hover:text-texto hover:decoration-brasa"
           >
-            Catálogo completo, com as stories e o toggle de tema
+            O catálogo completo, com as stories e o toggle de tema
           </a>
         </footer>
       </ContainerPagina>

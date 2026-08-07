@@ -13,10 +13,9 @@ function Card({
       data-size={size}
       className={cn(
         // CUSTOMIZADO. O stock separa cartao de fundo com ring-1
-        // ring-foreground/10. Na referencia nao existe contorno nenhum: o que
-        // faz o papel flutuar sobre a mesa e uma sombra baixa e larga. Troquei
-        // o anel pela --sombra-papel e subi o respiro de 16 pra 20px, que e o
-        // clima arejado dos cartoes da imagem.
+        // ring-foreground/10. Aqui nao existe contorno nenhum: o que faz o
+        // papel flutuar sobre a mesa e uma sombra baixa e larga. Troquei o anel
+        // pela --sombra-papel e subi o respiro de 16 pra 20px.
         "group/card flex flex-col gap-(--card-spacing) overflow-hidden rounded-lg bg-card py-(--card-spacing) text-ui text-card-foreground shadow-papel [--card-spacing:--spacing(5)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(4)] data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-lg *:[img:last-child]:rounded-b-lg",
         className
       )}
@@ -43,8 +42,8 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-title"
       className={cn(
-        // CUSTOMIZADO. Na referencia o titulo do cartao e pesado e apertado
-        // ("Accounts", "Cashflow"), nao um medium neutro.
+        // CUSTOMIZADO. Titulo de cartao aqui e pesado e apertado, nao um
+        // medium neutro que se confunde com o corpo do texto.
         "text-lede font-semibold group-data-[size=sm]/card:text-corpo",
         className
       )}

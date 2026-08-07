@@ -32,7 +32,7 @@ const buttonVariants = cva(
       // CUSTOMIZADO. O stock aperta o botao na horizontal (px-2.5 num controle
       // de 32px). Com --radius-lg em 16px o botao fica pilula, e pilula sem
       // respiro lateral vira comprimido. Aqui cada degrau ganha a largura que
-      // o formato pede, que e o que a referencia faz no See all e no Manage.
+      // o formato pede.
       size: {
         default:
           "h-9 gap-1.5 px-4 has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3",

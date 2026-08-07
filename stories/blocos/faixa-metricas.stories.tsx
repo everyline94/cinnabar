@@ -11,7 +11,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A régua de KPIs em vidro sobre a pintura. O detalhe que faz a referência parecer a referência está na fração: os centavos entram menores e mais apagados, e por isso são uma prop separada do valor.",
+          "A régua de KPIs em vidro sobre a pintura. O detalhe que muda tudo está na fração: os centavos entram menores e mais apagados, então o olho pega a ordem de grandeza primeiro. Por isso são uma prop separada do valor, e não um pedaço da string.",
       },
     },
   },

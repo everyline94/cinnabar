@@ -2,15 +2,15 @@
   "name": "cinnabar",
   "version": "0.1.0",
   "private": true,
-  "description": "Cinnabar: design system de tinta preta, papel branco e pigmento vermelhao",
+  "description": "Cinnabar: design system de tinta preta, papel branco e um pigmento vermelhao",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build",
+    "contraste": "node scripts/auditar-contraste.mjs",
     "build-site": "next build && storybook build -o out/catalogo",
     "a11y": "node scripts/a11y.mjs",
-    "tokens": "node scripts/tokens-da-referencia.mjs",
     "typecheck": "tsc --noEmit",
     "kit-diff": "node scripts/kit-diff.mjs"
   },

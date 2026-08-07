@@ -6,13 +6,14 @@ import { ChipVariacao } from "@/components/chip-variacao";
 /**
  * A regua de metricas em vidro sobre a capa pintada.
  *
- * E o segundo motivo forte da referencia: uma faixa translucida atravessando o
+ * O segundo motivo forte do sistema: uma faixa translucida atravessando o
  * cabecalho, com rotulo miudo em maiuscula, valor grande em mono e o chip de
  * variacao embaixo.
  *
- * O detalhe que faz a referencia parecer a referencia esta na fracao: os
- * centavos entram menores e mais apagados que os inteiros. Por isso `fracao` e
- * uma prop separada de `valor`, e nao um pedaco da string.
+ * O detalhe que muda tudo esta na fracao: os centavos entram menores e mais
+ * apagados que os inteiros, entao o olho pega a ordem de grandeza primeiro.
+ * Por isso `fracao` e uma prop separada de `valor`, e nao um pedaco da
+ * string.
  *
  * O vidro e branco a 12% sobre o veu da capa: 5.21:1 no pior ponto da pintura.
  */

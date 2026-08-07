@@ -1,19 +1,28 @@
 # Cinnabar
 
-Um design system de tinta preta, papel branco e um pigmento vermelhão, tirado
-de uma única imagem de referência (`referencia/dashboard.png`) por medição, não
-por estimativa.
+Um design system de tinta preta, papel branco e uma cor só.
 
-O nome vem do cinábrio, o pigmento vermelho-alaranjado que a pintura da capa
-da referência é.
+Cinábrio é a pedra de onde sai o vermelhão. Cara e venenosa, e os pintores
+usaram por dois mil anos assim mesmo, porque nada mais era tão vermelho. Fiz o
+sistema em cima disso: preto, branco e uma cor só. Ela não divide espaço com
+ninguém.
 
-**O que a imagem ditou.** A paleta é neutra de propósito: o fundo da página é
-`#f7f7f7` exato, o cartão é `#ffffff` exato e o rail é `#000000` exato. Nenhum
-branco quente, nenhum cinza temperado. A cor toda se concentra numa pintura em
-vermelhão e petróleo atrás do cabeçalho, e é o neutro absoluto que faz ela
-saltar. A ação primária é a pílula preta, não um botão colorido: o laranja é
-pigmento de marca e de arte, e sobre papel branco ele dá 3.03:1, o que basta
-para preencher e não basta para escrever.
+Na prática isso virou três decisões que valem mais que qualquer lista de
+componente:
+
+**O neutro é absoluto.** O fundo da página é cinza sem tempero, o cartão é
+branco puro e o rail é preto puro. Nada de creme, nada de cinza-azulado. Cinza
+temperado rouba atenção do vermelhão, e o vermelhão é o ponto.
+
+**A ação primária é preta, não colorida.** O laranja é pigmento de marca:
+sobre papel ele dá 3.03:1, então preenche e assina, mas nunca escreve. Botão
+laranja com texto branco reprovaria em contraste, e quase todo mundo faz isso
+mesmo assim.
+
+**Todo contraste é medido, nenhum é estimado.** São 88 pares conferidos entre
+os dois temas por script, e o build reprova se algum cair abaixo do mínimo.
+Isso incluiu quatro cores que passavam sozinhas e reprovavam dentro do próprio
+chip, coisa que a olho nu ninguém pega.
 
 ## Como rodar
 
@@ -21,14 +30,14 @@ para preencher e não basta para escrever.
 npm install
 npm run storybook      # o catálogo, em localhost:6007
 npm run dev            # a vitrine, em localhost:3000
-npm run tokens         # reamostra a referência e remede todo par de contraste
+npm run contraste      # mede os 88 pares e reprova se algum cair
 npm run kit-diff       # o que ainda é shadcn puro e o que já foi vestido
 npm run typecheck      # tsc --noEmit
 npm run build-site     # a vitrine em out/ e o catálogo em out/catalogo/
 npm run a11y           # o axe em toda story nos dois temas, mais a vitrine
 ```
 
-O `a11y` precisa do `build-site` antes. Para conferir o build à mão, sirva com
+O `a11y` precisa do `build-site` antes. Pra conferir o build na mão, sirva com
 um servidor de arquivo literal:
 
 ```bash
@@ -41,8 +50,8 @@ quebrado quando não está.
 ## Os tokens
 
 Tudo mora em `styles/tokens.css`. Não existe `tailwind.config.js`. Cada token é
-nomeado pelo **papel** que cumpre, nunca pela cor que tem, e carrega no
-comentário o contraste medido de verdade.
+nomeado pelo **papel** que cumpre, nunca pela cor que tem: ninguém precisa
+saber que `--mesa` é cinza, precisa saber que é onde o papel se apoia.
 
 | grupo | tokens |
 |---|---|
@@ -62,9 +71,9 @@ Quatro regras de arquitetura que valem mais que a lista:
    **não** se redeclara no `.dark`: redeclarar só um dos dois quebra o par já
    medido. Cada caso tem comentário no arquivo dizendo isso.
 2. **A borda de campo é token separado da decorativa.** `--linha-campo` é
-   calibrada para passar 3:1 (WCAG 1.4.11) porque é a única coisa que diz onde
-   o campo começa; `--linha` só desenha.
-3. **`secondary`, `muted` e `accent` da ponte nunca apontam para o fundo puro.**
+   calibrada pra passar 3:1 (WCAG 1.4.11) porque é a única coisa que diz onde o
+   campo começa. `--linha` só desenha, então pode ser fraca.
+3. **`secondary`, `muted` e `accent` da ponte nunca apontam pro fundo puro.**
    Saem de `color-mix()` com um degrau do texto, senão botão secundário some
    na página.
 4. **A pintura da capa é um quadro, não superfície de interface.** Os tokens
@@ -77,15 +86,14 @@ listas escritas à mão divergem em uma semana.
 
 ## O que é medido, e por quem
 
-- `scripts/tokens-da-referencia.mjs` (`npm run tokens`) decodifica o PNG da
-  referência com zlib puro, amostra as regiões e mede o contraste de **88
-  pares** entre os dois temas, incluindo os compostos (um chip a 12% só vale se
-  você compôs a tinta sobre o fundo antes de medir) e as cadeias da pintura.
-  Sai com erro se qualquer par cair abaixo do mínimo declarado.
+- `scripts/auditar-contraste.mjs` (`npm run contraste`) mede os 88 pares entre
+  os dois temas, incluindo os compostos (um chip a 12% só vale se você compôs a
+  tinta sobre o fundo antes de medir) e as cadeias da pintura, que tem duas
+  camadas antes do texto. Sai com erro se algum par cair abaixo do mínimo.
 - `scripts/a11y.mjs` (`npm run a11y`) passa o axe em todas as stories nos dois
   temas mais a vitrine, e mede o pixel mais claro da capa renderizada. Esse
   último teste existe porque o modelo de cor não enxergava as pinceladas
-  claras: elas furaram o piso na primeira versão e ninguém teria visto.
+  claras: elas furaram o piso e ninguém teria visto.
 
 A vitrine roda o conjunto completo de regras, porque é página de verdade. As
 stories rodam o completo menos `landmark-one-main`, `region` e
@@ -121,10 +129,10 @@ Em `components/*.tsx`, e nada de dado, fetch ou regra de negócio aqui dentro:
 tudo entra por prop.
 
 `Marca` `BotaoAcao` `ContainerPagina` `CabecalhoPagina` `Secao` `TileMetrica`
-`EstadoVazio` `ProvedorTema` `ToggleTema` `Toaster`, mais os blocos-assinatura
-que vêm direto da referência: `CapaPintada` (a pintura, feita só em CSS),
-`FaixaMetricas` (a régua de KPIs em vidro), `ChipVariacao`, `LinhaConta`,
-`AnelComposicao` e `TileAviso`.
+`EstadoVazio` `ProvedorTema` `ToggleTema` `Toaster`, mais os blocos-assinatura:
+`CapaPintada` (a pintura, feita só em CSS, sem imagem), `FaixaMetricas` (a
+régua de KPIs em vidro), `ChipVariacao`, `LinhaConta`, `AnelComposicao` e
+`TileAviso`.
 
 ## Armadilhas que já custaram tempo
 

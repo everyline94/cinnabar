@@ -42,7 +42,7 @@ export const Sublinhado: Story = {
     docs: {
       description: {
         story:
-          "A variante de linha é a que a referência usa no cabeçalho: o item ativo ganha um traço embaixo, sem pastilha nem fundo.",
+          "A variante de linha é a que o sistema usa em cabeçalho sobre a pintura: o item ativo ganha um traço embaixo, sem pastilha nem fundo. Pastilha em cima de superfície pintada vira remendo.",
       },
     },
   },

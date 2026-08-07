@@ -18,7 +18,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "O papel do sistema. Na referência o cartão não tem contorno: quem separa o papel da mesa é uma sombra baixa e larga. Por isso o anel do shadcn saiu e entrou a --sombra-papel.",
+          "O papel do sistema. Cartão aqui não tem contorno: quem separa o papel da mesa é uma sombra baixa e larga. Por isso o anel do shadcn saiu e entrou a --sombra-papel.",
       },
     },
   },

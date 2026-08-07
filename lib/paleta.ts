@@ -4,7 +4,7 @@
  * Este arquivo e a unica lista de tokens escrita a mao no projeto. Ele espelha
  * o :root e o .dark do styles/tokens.css, e tres coisas leem daqui:
  *
- *   - scripts/tokens-da-referencia.mjs, que reprova o build se algum par cair
+ *   - scripts/auditar-contraste.mjs, que reprova o build se algum par cair
  *     abaixo do minimo (o Node tira os tipos sozinho, entao o .mjs importa
  *     este .ts direto);
  *   - a story de Fundacao/Paleta, que imprime o contraste medido na tela;
@@ -125,7 +125,7 @@ export const TOKENS: Token[] = [
   {
     nome: "acao",
     grupo: "Ação",
-    papel: "a ação primária. Na referência ela é preta, não colorida",
+    papel: "a ação primária, que aqui é preta e não colorida",
     claro: "#000000",
     escuro: "#fafafa",
   },

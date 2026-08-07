@@ -8,18 +8,18 @@ import { Button } from "@/components/ui/button";
  * A UNICA receita de acao forte do sistema.
  *
  * Existe pra que ninguem remonte a pilula na mao em cada tela. A cor da acao
- * aqui e a TINTA, nao o pigmento: na referencia o botao forte e a pilula preta
- * ("See all", "Transfer funds"), e o laranja fica na pintura e na marca. Botao
- * laranja daria 3.03:1 com texto branco e reprovaria.
+ * aqui e a TINTA, nao o pigmento: o laranja fica na pintura e na marca, e
+ * botao laranja daria 3.03:1 com texto branco e reprovaria.
  *
- * A contagem opcional reproduz o "See all 13" da referencia: um contador em
- * mono dentro de uma pastilha translucida, do lado direito do rotulo.
+ * A contagem opcional e um contador em mono dentro de uma pastilha
+ * translucida, do lado direito do rotulo, pra quando a acao leva um numero
+ * junto ("Ver todos 13").
  */
 
 type BotaoAcaoProps = React.ComponentProps<typeof Button> & {
   /** O numero da pastilha. Sem ele, o botao e so o rotulo. */
   contagem?: number;
-  /** A seta a direita, como no "Transfer funds" da referencia. */
+  /** A seta a direita, pra acao que leva pra outro lugar. */
   seta?: boolean;
 };
 

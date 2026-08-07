@@ -23,7 +23,7 @@ import { ListaContas, type Conta } from "@/components/linha-conta";
 import { TileAviso } from "@/components/tile-aviso";
 
 /**
- * A cena: a referencia remontada com as pecas do sistema.
+ * A cena: um painel financeiro montado so com as pecas do sistema.
  *
  * E o unico teste que prova que os tokens seguram uma TELA inteira, e nao so
  * um componente isolado numa moldura. Componente isolado sempre parece bem.

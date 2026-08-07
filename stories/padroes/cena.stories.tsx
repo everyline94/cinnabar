@@ -10,7 +10,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A referência remontada só com peças do sistema. É o único teste que prova que os tokens seguram uma tela inteira, e não apenas um componente isolado numa moldura.",
+          "Um painel financeiro montado só com peças do sistema. Componente isolado numa moldura sempre parece bom: é aqui que dá pra ver se os tokens aguentam densidade, ou se eles só funcionam bonito no vazio.",
       },
     },
   },

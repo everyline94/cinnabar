@@ -3,7 +3,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * O tile de aviso: o quadrado amarelo com a linha de pulso da referencia.
+ * O tile de aviso: o quadrado amarelo com a linha de pulso.
  *
  * O amarelo e pigmento, igual ao laranja: NAO muda entre os temas, e por isso
  * --sobre-aviso tambem nao muda. O par continua 13.86:1 no claro e no escuro.
