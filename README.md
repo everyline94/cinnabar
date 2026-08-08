@@ -2,10 +2,16 @@
 
 Um design system de tinta preta, papel branco e uma cor só.
 
+**[Ver no ar](https://cinnabar-catalogo.vercel.app)** ·
+**[Catálogo de componentes](https://cinnabar-catalogo.vercel.app/catalogo/)**
+
 Cinábrio é a pedra de onde sai o vermelhão. Cara e venenosa, e os pintores
 usaram por dois mil anos assim mesmo, porque nada mais era tão vermelho. Fiz o
 sistema em cima disso: preto, branco e uma cor só. Ela não divide espaço com
 ninguém.
+
+Feito com Tailwind v4 (sem `tailwind.config.js`, os tokens moram num CSS só),
+shadcn no style `base-nova` sobre Base UI, Storybook 10 e Next 16.
 
 Na prática isso virou três decisões que valem mais que qualquer lista de
 componente:

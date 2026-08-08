@@ -155,14 +155,22 @@ export default function Vitrine() {
       </ContainerPagina>
 
       <ContainerPagina>
-        <footer className="flex flex-wrap items-center justify-between gap-4 border-t border-linha pt-8">
+        <footer className="flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-linha pt-8">
           <Marca tamanho="sm" />
-          <a
-            href="/catalogo/"
-            className="text-ui text-texto-suave underline decoration-linha-campo underline-offset-4 hover:text-texto hover:decoration-brasa"
-          >
-            O catálogo completo, com as stories e o toggle de tema
-          </a>
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <a
+              href="/catalogo/"
+              className="text-ui text-texto-suave underline decoration-linha-campo underline-offset-4 hover:text-texto hover:decoration-brasa"
+            >
+              O catálogo completo, com as stories e o toggle de tema
+            </a>
+            <a
+              href="https://github.com/everyline94/cinnabar"
+              className="text-ui text-texto-suave underline decoration-linha-campo underline-offset-4 hover:text-texto hover:decoration-brasa"
+            >
+              O código no GitHub
+            </a>
+          </nav>
         </footer>
       </ContainerPagina>
     </main>
